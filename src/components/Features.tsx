@@ -10,7 +10,6 @@ interface IBentoCard {
   src: string;
   title: React.ReactNode;
   description: string;
-  isComingSoon?: boolean;
 }
 
 const BentoTilt: React.FC<IBentoTilt> = ({ children, className = "" }) => {
@@ -34,7 +33,7 @@ const BentoTilt: React.FC<IBentoTilt> = ({ children, className = "" }) => {
     setTransformStyle(newTransform);
   };
 
-  const handleMouseLeave = (e: React.MouseEvent) => {
+  const handleMouseLeave = () => {
     setTransformStyle("");
   };
 
@@ -53,12 +52,7 @@ const BentoTilt: React.FC<IBentoTilt> = ({ children, className = "" }) => {
   );
 };
 
-const BentoCard: React.FC<IBentoCard> = ({
-  src,
-  title,
-  description,
-  isComingSoon,
-}) => {
+const BentoCard: React.FC<IBentoCard> = ({ src, title, description }) => {
   return (
     <div className="relative size-full">
       <video
@@ -101,11 +95,10 @@ const Features = () => {
             src="videos/feature-1.mp4"
             title={
               <>
-                radi<b>n</b>t
+                radia<b>n</b>t
               </>
             }
             description="A cross-platform metagame app, turning your activities across web2 and web3 games into a rewarding adventure."
-            isComingSoon
           />
         </BentoTilt>
 

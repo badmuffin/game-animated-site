@@ -4,11 +4,14 @@ import { gsap } from "gsap";
 interface AnimatedTitleProps {
   text: string;
   containerClass?: string;
+  textClass?: string
+  // sectionId?: string;
 }
 
 const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
   text,
   containerClass,
+  textClass,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -35,19 +38,16 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className={`animated-title ${containerClass}`}
-    >
+    <div ref={containerRef} className={`animated-title ${containerClass}`}>
       {text.split("<br />").map((line, index) => (
         <div
           key={index}
-          className="flex-center text-black max-w-full flex-wrap gap-2 px-10 md:gap-3"
+          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
         >
           {line.split(" ").map((word, i) => (
             <span
               key={i}
-              className="animated-word"
+              className={`animated-word ${textClass}`}
               dangerouslySetInnerHTML={{ __html: word }}
             />
           ))}
